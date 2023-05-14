@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02-评论列表案例</title>
+    <link rel="stylesheet" href="./sour/css/bootstrap.css">
+    <link rel="stylesheet" href="./sour/js/jquery.js">
+    <link rel="stylesheet" href="./评论列表/main.css">
+    <link rel="stylesheet" href="./评论列表/cmt.js">
+</head>
+<body>
+    <!-- 面板区域 -->
+    <form action="" style="padding:20px;" data-id="formadd" >
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                  <h3 class="panel-title">发表评论</h3>
+            </div>
+            <div class="panel-body">
+                  <div>评论人：</div>
+                  <input type="text" placeholder="请输入评论人" class="form-control" name="username">
+                  <div>评论内容：</div>
+                  <textarea placeholder="请输入内容,最多10字" class="form-control" name="content"></textarea>
+                  <button class="btn btn-primary"> 发表评论</button>
+                  
+            </div>
+      </div>
+    </form>
+    <!-- 评论区域 -->
+    
+    <ul class="list-group" style="padding:20px" data-id="list">
+        <li class="list-group-item" >
+            <span class="badge" style="background-color: yellow;">评论时间：</span>
+            <span class="badge" style="background-color: skyblue;">评论人：</span>
+            内容
+        </li>
+        
+        
+    </ul>
+    
+</body>
+</html>

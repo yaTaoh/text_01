@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>
+        <span style="display:block"></span>
+        <button>dianji</button>
+    </h2>
+    <script>
+        // let xhr = new XMLHttpRequest
+        // xhr.open('get','')
+        // xhr.send()
+        // xhr.onreadystatechange = function(){
+        //     if (xhr.readyState === 4 && xhr.status === 200) {
+        //         alert('这女航')
+        //     }
+        // }
+
+        // let xhr = new XMLHttpRequest
+        // xhr.open('post','http://www.liulongbin.top:3006/api/addbook')
+        // xhr.setRequestHeader('content-Type','application/x-www-form-urlencoded')
+        // xhr.send('bookname=水浒传&author=施耐庵&publisher=上海出版社')
+        // xhr.onreadystatechange =function(){
+        //     if (xhr.readyState=== 4 &&xhr.status === 200){
+        //         alert('成功')
+        //     }
+        // }
+        // console.log(12345);
+        let btn = document.querySelector('button')
+        let span = document.querySelector('span')
+        function getaime() {
+                let data = new Date()
+                let y = data.getFullYear()
+                let m = ('0'+ data.getMonth()).slice(-2)
+                let d = ('0'+ data.getDay()).slice(-2)
+                let hh = ('0'+data.getHours()).slice(-2)
+                let mm = ('0' + data.getMinutes()).slice(-2)
+                let ss = ('0' + data.getSeconds()).slice(-2)
+                return y + '-' + m + '-' + d +' '+ hh +':' + mm + ';'+ ss  
+        }
+        let time = getaime()
+        span.innerHTML = time
+        setInterval(function(){
+            let time = getaime()
+            span.innerHTML = time
+        },1000)
+        
+        
+        function itheima(option) {
+            let xhr = new XMLHttpRequest()
+            let  qs = resolveData(option.data)
+            if (option.method.toUpperCase() === 'GET') {
+                xhr.open(option.method,option.url + '?' +qs)
+                xhr.send()
+            }else if (option.method.toUpperCase === 'POST'){
+                xhr.open(option.method,option.url)
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')
+                xhr.send(qs)
+            }
+            xhr.onreadystatechange = function(){
+                if (xhr.readystate === 4 && xhr.status === 200){
+                    let resa = json.parse(xhr.responseText)
+                    option.success(result)
+                }
+            }
+        }
+        
+        
+    </script>
+</body>
+</html>
