@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>03</title>
+    <script src="./sour/template-web.js"></script>
+    <script src="./sour/js/jquery.js"></script>
+   
+    
+</head>
+<body>
+    <div class="box"></div>
+    
+    <!-- 风衣模板 -->
+    <script type="text/html" id="user">
+        <h1>{{name}} ---- {{age}}</h1>
+        <h3>{{test}}</h3>
+        <div>
+            {{if flag === 0}}
+            flag---0
+            {{else flag === 1}}
+            flag---1
+            {{/if}}
+            
+        </div>
+        <ul>
+            {{each hobby}}
+            <li>索引是{{$index}},循环项目是{{$item}}</li>
+            {{/each}}
+        </ul>
+        <h3>{{regTime  | dataform}}</h3>
+    </script>
+    <!-- 设置数据 -->
+    <script type="text/javascript">
+        template.defaults.imports.dataform =function(data){
+            let y = data.getFullYear()
+            let m = data.getMonth()+1
+            let d =data.getDate()
+            return y + '-' + m +  '-' + d
+        }
+        let data = { name: 'zs', age: 20, test: '<h3>测试原文输出</h3>', flag: 1, hobby: ['吃饭', '睡觉', '写代码'], regTime: new Date() }
+                    
+        let str = template('user',data)
+        $('.box').html(str)
+
+    </script>
+</body>
+</html>

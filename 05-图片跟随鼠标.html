@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>051</title>
+    <script src="./sour/js/jquery.js"></script>
+</head>
+<style>
+    html,body {
+        margin: 0;
+        padding: 0;
+    }
+    img {
+        position: absolute;
+        display: block;
+        width: 100px;
+        height: 40px;
+    }
+</style>
+<body>
+    <img src="./03-淘宝搜索案例/images/taobao_logo.png" alt="">
+    <script>
+        // 不使用节流
+        // let img = $('img')
+        let timer = null
+        $(document).on('mousemove',function(e){
+            if (timer)  return 
+            timer =  setTimeout(function(){
+                
+                $('img').css('left',e.pageX +'px').css('top',e.pageY + 'px')
+                console.log('ok');
+                timer =null
+            },16)
+            
+        })
+    </script>
+</body>
+</html>
