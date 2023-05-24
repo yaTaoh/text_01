@@ -1,81 +1,86 @@
 <template>
   <div>
-    <div class="ox" v-show="key"></div>
-    <button @click="key =! key">{{ key?'隐藏':'显示' }}</button>
-    <br><hr>
-    <select name="" id="" v-model="num">
-      <option value="1">1</option>
-      <option value="2">2</option>
-      <option value="3">3</option>
-    </select>
-
-    <!-- 案例3 -->
-    <h2>{{title}}</h2>
-    <h3>{{channel}}</h3>
-    
-    <button @click="edit" >编辑</button>
-    <br>
-    <div class="fore" v-show="key1">
-      <div>
-        标题：<input type="text" placeholder="请输入标题" v-model="title1">
-      </div>
-      <div>
-        频道：<input type="text" placeholder="请输入频道" v-model="channel1">
-      </div>
-      <button @click="cannel">取消</button>
-      <button @click="ok">确认</button>
+    <div>
+      计划任务：<input type="text" class="int" v-model="num">  
+      <button @click="fn1">新增</button>
     </div>
     
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+          <tr>
+            <th>编号</th>
+            <th>任务</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr  v-for="(item,i) in list" :key="item.id" >
+            <td>{{i+1}}</td>
+            <td>{{item.name}}</td>
+            <td><a href="#">删除</a></td>
+          </tr>
+          <!-- <tr >
+            <td>2</td>
+            <td>学习摄影</td>
+            <td><a href="#">删除</a></td>
+          </tr> -->
+        </tbody>
 
+    </table>
+
+
+    <h3>需求：</h3>
+    <p>1、把list数据渲染页面内</p>
+    <p>2、新增一个计划任务</p>
+    <p>3、删除任务计划</p>
+    <p>4、挑战任务：数据本地化</p>
   </div>
 </template>
 
 <script>
 export default {
   data(){
-    return{
-      key :true,
-      num:2,
-      title:"标题1",
-      channel:"频道1",
-      title1:"",
-      channel1:"",
-      key1:false
+    return {
+      list:[
+        {id:1,name:"学习VUE"},
+        {id:2,name:"学习摄影"},
+        {id:3,name:"睡觉3天"},
+      ],
+      num: '',
+
     }
   },
   methods:{
-    edit(){
-      this.title1 = this.title
-      this.channel1 = this.channel
-      this.key1 =! this.key1
+    fn1(){
+      // let num = 1
+      if (this.num === '') {
+        return alert('不能为kong')
+      }
 
-    },
-    ok(){
-      this.title = this.title1
-      this.channel = this.channel1
-      this.title1 = ""
-      this.channel1 = ""
-      this.key1 =! this.key1
-    },
-    cannel(){
-      this.title1 = ""
-      this.channel1 = ""
-      this.key1 =! this.key1
+      let name1 = 'zs'; 
+      this.list.forEach((item) => {
+        if (item.id === num) {
+          name1 = item.name
+        }
+      });
+
+      
+        let one ={
+          id:this.id,
+          name:name1
+        }
+        
+        this.list.push(one);
+        // // console.log(this.list.push(one));
+        // console.log(this.list.name);
+      
     }
   }
+
+  
 }
 </script>
 
 <style>
-  .ox {
-    width: 50px;
-    height: 50px;
-    background-color: #888;
-    
-  };
-  /* .fore {
-    display: none;
 
-  }; */
-  
 </style>

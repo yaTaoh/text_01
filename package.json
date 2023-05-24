@@ -35,7 +35,12 @@
     "parserOptions": {
       "parser": "@babel/eslint-parser"
     },
-    "rules": {}
+    "rules": {
+      "globals":{
+        "Aliplayer": true
+      },
+      "no-unused-vars": "off"
+    }
   },
   "browserslist": [
     "> 1%",
